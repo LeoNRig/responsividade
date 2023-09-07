@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsivo</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 768px) {
+        .navbar a {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+        .navbar button {
+            margin-left: 20px;
+            font-size: 14px;
+        }
+    }
+
+    .navbar {
+        background-color: #331033;
+        overflow: hidden;
+        box-shadow:0px 0px 3px #ccc;
+    }
+
+    .navbar a {
+        margin-left: 100px;
+        color: white;
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar button {
+        justify-content: center;
+        margin-left: 15%;
+        color: black;
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar button:hover {
+        color: #ccc;
+        background-color: #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .navbar a:hover {
+        background-color: #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    
+    #back {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    @media (max-width: 768px) {
+        .modal {
+            width: 90%;
+            padding: 1rem;
+        }
+        .m-body input {
+            margin-bottom: 1rem;
+        }
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background-color: #331033;
+        width: 500px;
+        max-width: 90%;
+        padding: 1.2rem;
+        border-radius: 10px;
+    }
+    .m-header {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom:1px solid #ccc;
+        margin-bottom:1rem;
+        padding-bottom:1rem;
+
+    }
+    .m-header button {
+        color: black;
+        float: left;
+        display: block;
+        text-align: center;
+        padding: 10px 10px;
+        text-decoration: none;
+    }
+
+    .m-header button:hover {
+        color: white;
+        background-color: #333;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    .m-body {
+        display: flex;
+        flex-direction: column;
+        color: white;
+    }
+    .m-body input {
+        padding: 8px 10px; 
+        border: none;
+        border-radius: 2px;
+        background-color: #ccc;
+        margin-bottom: 2rem;
+    }
+    .m-body #btn-salvar {
+        border: none;
+        background-color: #ccc;
+        color: #331033;
+        padding: 14px 16px;
+        width: 100px;
+        border-radius: 5px;
+    }
+
+    .m-body #btn-salvar:hover {
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .corpo table thead {
+            display: none;
+        }
+        .corpo table tbody tr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #331033;
+        }
+        .corpo table tbody td {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    .corpo {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 20px 0;
+        padding: 0 20px;
+        width: 50%;
+        justify-content: center;
+    }
+
+    #tabela {
+        padding: 10px 12px;
+        text-align: center;
+    }
+
+    tbody {
+        border-bottom: 1px solid #331033;
+    }
+
+
+</style>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="Contato.html">Contate-nos</a>
+        <button id="btn-cadastro"><b>Cadastrar</b></button>
+    </div>
+    <div id="back"></div>
+    <div class="modal">
+        <div class="m-header">
+            <h2>Novo Cadastro</h2>
+            <button id="close-modal"><b>Fechar</b></button>
+        </div>
+        <div class="m-body">
+            <label>Nome</label>
+            <input id="nome" type="text"></input>
+            <label>Telefone</label>
+            <input id="telefone"type="text"></input>
+            <label>Email</label>
+            <input id="email" type="email"></input>
+            <button id="btn-salvar">Salvar</button>
+        </div>
+    </div>
+    <div class="corpo">
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        const AbModal = document.querySelector("#btn-cadastro");
+        const ClModal = document.querySelector("#close-modal");
+        const modal = document.querySelector(".modal");
+        const back = document.querySelector("#back");
+
+        AbModal.addEventListener("click",()=>{
+            modal.style.display = "block";
+            back.style.display = "block";
+        });
+
+        ClModal.addEventListener("click", () => {
+            modal.style.display = "none";
+            back.style.display = "none";
+        });
+
+        back.addEventListener("click", ()=> {
+            modal.style.display = "none";
+            back.style.display = "none";
+        })
+
+        const salvarButton = document.getElementById("btn-salvar");
+
+        salvarButton.addEventListener("click", () => {
+    
+        const nome = document.getElementById("nome").value;
+        const telefone = document.getElementById("telefone").value;
+        const email = document.getElementById("email").value;
+
+        const dados = {
+            nome,
+            telefone,
+            email,
+        };
+
+        
+        const dadosJSON = JSON.stringify(dados);
+
+        
+        localStorage.setItem("cadastro", dadosJSON);
+
+        
+        modal.style.display = "none";
+        back.style.display = "none";
+
+        
+        document.getElementById("nome").value = "";
+        document.getElementById("telefone").value = "";
+        document.getElementById("email").value = "";
+        atualizarTabela();
+    });
+
+    function atualizarTabela() {
+    
+        const dadosJSON = localStorage.getItem("cadastro");
+
+        
+        if (dadosJSON) {
+            const dados = JSON.parse(dadosJSON);
+            const tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+
+            
+            const linhaHTML = `
+                <tr id="insert">
+                    <td>${dados.nome}</td>
+                    <td>${dados.telefone}</td>
+                    <td>${dados.email}</td>
+                </tr>
+            `;
+
+            tabela.innerHTML += linhaHTML;
+    }
+}
+
+atualizarTabela();
+    </script>
+</body>
+</html>
