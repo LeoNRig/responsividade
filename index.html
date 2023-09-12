@@ -232,6 +232,7 @@
         const ClModal = document.querySelector("#close-modal");
         const modal = document.querySelector(".modal");
         const back = document.querySelector("#back");
+        let cadastros = [];
 
         AbModal.addEventListener("click",()=>{
             modal.style.display = "block";
@@ -262,11 +263,14 @@
             email,
         };
 
-        
-        const dadosJSON = JSON.stringify(dados);
+
+        cadastros.push(dados);
 
         
-        localStorage.setItem("cadastro", dadosJSON);
+        const dadosJSON = JSON.stringify(cadastros);
+
+        
+        localStorage.setItem("cadastros", dadosJSON);
 
         
         modal.style.display = "none";
@@ -281,14 +285,17 @@
 
     function atualizarTabela() {
     
-        const dadosJSON = localStorage.getItem("cadastro");
+        const dadosJSON = localStorage.getItem("cadastros")
 
         
         if (dadosJSON) {
-            const dados = JSON.parse(dadosJSON);
-            const tabela = document.getElementById("tabela").getElementsByTagName("tbody")[0];
-
+            cadastros = JSON.parse(dadosJSON);
+            const tabela = document.querySelector("#tabela tbody")
+            tabela.innerHTML = "";
             
+        cadastros.forEach((dados) => {
+
+        
             const linhaHTML = `
                 <tr id="insert">
                     <td>${dados.nome}</td>
@@ -297,7 +304,8 @@
                 </tr>
             `;
 
-            tabela.innerHTML += linhaHTML;
+            tabela.innerHTML += linhaHTML;  
+        }); 
     }
 }
 
