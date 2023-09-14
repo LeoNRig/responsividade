@@ -11,17 +11,6 @@
         font-family: Arial, sans-serif;
     }
 
-    @media (max-width: 768px) {
-        .navbar a {
-            margin-left: 1px;
-            font-size: 14px;
-        }
-        .navbar button {
-            margin-left: 10px;
-            font-size: 14px;
-        }
-    }
-
     .navbar {
         width: 100%;
         background-color: #331033;
@@ -63,6 +52,17 @@
         cursor: pointer;
     }
 
+    @media (max-width: 768px) {
+        .navbar a {
+            margin-left: 65px;
+            font-size: 14px;
+        }
+        .navbar button {
+            margin-left: 65px;
+            font-size: 14px;
+        }
+    }
+
     
     #back {
         display: none;
@@ -74,15 +74,7 @@
         background-color: rgba(0,0,0,0.6);
     }
 
-    @media (max-width: 768px) {
-        .modal {
-            width: 90%;
-            padding: 1rem;
-        }
-        .m-body input {
-            margin-bottom: 1rem;
-        }
-    }
+    
     .modal {
         display: none;
         position: fixed;
@@ -144,6 +136,16 @@
     .m-body #btn-salvar:hover {
         background-color: #fff;
         cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        .modal {
+            width: 90%;
+            padding: 1rem;
+        }
+        .m-body input {
+            margin-bottom: 1rem;
+        }
     }
 
     @media (max-width: 768px) {
